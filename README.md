@@ -10,9 +10,12 @@ Tale Table은 **AI가 게임 마스터(GM)를 맡는 1인용 웹 TRPG**입니다
 
 ## ▶ 플레이
 
-- **게임 링크 (Claude 아티팩트)**: https://claude.ai/artifact/M2Ebvt1csWb9ezcwmfuFSE
-  - Claude 계정으로 로그인하면 바로 플레이할 수 있습니다. AI 사용량은 플레이어 본인 Claude 요금제에서 차감되며, 서버나 API 키가 필요 없습니다.
-- **로그인 없이 플레이**: claude.ai 밖에서는 Google Gemini(`gemini-3.5-flash-lite`, 한도·과부하 시 `gemini-3.1-flash-lite`로 자동 교체)로 AI가 동작합니다.
+**로그인 없이 바로 플레이 가능, Claude 계정이 있으면 원활하게 플레이 가능**
+
+- **로그인 없이 플레이**: 설치 없이 바로 시작할 수 있습니다. AI는 Google Gemini(`gemini-3.5-flash-lite`, 한도·과부하 시 `gemini-3.1-flash-lite`로 자동 교체)로 동작합니다.
+- **Claude 계정으로 플레이**: https://claude.ai/artifact/M2Ebvt1csWb9ezcwmfuFSE
+  - Claude 계정으로 로그인하면 더 원활하게 플레이할 수 있습니다. AI 사용량은 플레이어 본인 Claude 요금제에서 차감되며, 서버나 API 키가 필요 없습니다.
+- **이 저장소의 파일로 실행하는 경우**
   - ⚠️ 이 저장소의 `index.html`은 보안을 위해 **API 키를 뺀 공개본**입니다. 직접 실행하려면 파일 안의 `GEMINI_API_KEY=""`에 본인 Gemini API 키를 넣으세요. 키를 넣은 파일은 공개 저장소에 올리지 마세요. 키가 없으면 기본 서술로 진행됩니다.
   - 파일을 더블클릭해 열 때 요청이 막히면 `python -m http.server` 실행 후 `http://localhost:8000` 으로 접속하세요.
 
