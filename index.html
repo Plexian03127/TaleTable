@@ -22,7 +22,7 @@ h1{font-size:20px;margin:4px 0 12px}
 .bar.e>i{background:var(--bad)}
 #ctl[style*="flex"]+#act{display:none}   /* 프롤로그 진행 중에는 행동 버튼 대신 다음/자동/건너뛰기 */
 #stat{padding-bottom:8px;margin-bottom:2px;border-bottom:1px solid var(--bd)}
-.row{display:flex;justify-content:space-between;font-size:14px;margin:6px 0 4px}
+.row{display:flex;justify-content:space-between;font-size:14px;margin:6px 0 4px}.st-panel .row.kb{outline:2px solid #2f7df6;outline-offset:2px;background:rgba(47,125,246,.14);border-radius:6px}
 #log{height:46vh;overflow-y:auto}
 /* 스토리 창 스크롤바: 배경(트랙)은 투명, 움직이는 막대만 표시 */
 #log{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--mut) 55%,transparent) transparent}
@@ -91,7 +91,7 @@ h1{font-size:20px;margin:4px 0 12px}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.5s;animation-timing-function:ease}
 #dlg{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(5,8,16,.62)}
 #dlg .dbox{width:100%;max-width:340px;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:14px;padding:18px 16px 14px;box-shadow:0 16px 40px rgba(0,0,0,.5)}
-#dlg #dxb{color:var(--bad);border-color:var(--bad);background:transparent}
+#dlg #dxb{color:var(--bad);border-color:var(--bad);background:transparent}#dlg button:focus,#dlg button:focus-visible{outline:none;box-shadow:none}
 #dlg p{margin:0 0 14px;white-space:pre-wrap;line-height:1.55}
 #fx{position:fixed;inset:0;z-index:200;background:#0b0e16;opacity:0;pointer-events:none;transition:opacity .26s ease}
 #fx.on{opacity:1;pointer-events:auto}
@@ -138,7 +138,7 @@ small{color:var(--mut)}
 .endcard .chips span.on{border-color:var(--ac);color:var(--tx)}.endcard .chips span.cur{background:var(--ac);border-color:var(--ac);color:#fff}
 
 
-/* ===== 타이틀 & API 팝업 ===== */
+/* ===== 타이틀 ===== */
 #title{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:24px 16px;
  background:#0b0e16 center/cover no-repeat;color:#fff;overflow:auto}
 #title::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,18,.35) 0%,rgba(8,10,18,.55) 45%,rgba(8,10,18,.92) 100%)}
@@ -154,29 +154,14 @@ small{color:var(--mut)}
 #title.hasSave #tstart{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.28);box-shadow:none;font-weight:500}
 #title .tb.s{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.9);font-weight:500}
 #title .tb.s:hover{background:rgba(255,255,255,.12)}
-#title .note{font-size:12px;color:rgba(255,255,255,.6);margin:6px 0 0;line-height:1.5}
-#title .saved{font-size:13px;color:#7fe0a6;margin:4px 0 0;background:none;border:0;cursor:pointer;text-decoration:underline;padding:4px}
-#aimod{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(5,7,12,.6);backdrop-filter:blur(3px)}
-#aimod.on{display:flex}
-#aimod .box{width:100%;max-width:360px;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:14px;padding:16px;box-shadow:0 18px 50px rgba(0,0,0,.45);animation:pop .22s ease-out;max-height:90vh;overflow:auto}
+#title .note a{color:#9cc4ff;font-weight:600;text-decoration:underline;text-underline-offset:3px}#title .note{font-size:12px;color:rgba(255,255,255,.6);margin:6px 0 0;line-height:1.5}
 @keyframes pop{from{opacity:0;transform:scale(.96) translateY(6px)}to{opacity:1;transform:none}}
-#aimod .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
-#aimod .hd b{font-size:16px}
-#aimod .x{flex:none;min-width:0;width:32px;height:32px;padding:0;border:0;background:none;font-size:20px;color:var(--mut)}
-#aimod label{display:block;font-size:13px;color:var(--mut);margin:8px 0 4px}
-#aimod select{width:100%;padding:10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font-size:15px}
-#aimod .st{font-size:13px;min-height:1.4em;margin:2px 0 8px}
-#aimod .st.ok{color:var(--ok)}#aimod .st.no{color:var(--bad)}
-#aimod .warn{font-size:12px;color:var(--mut);margin:10px 0 0;line-height:1.5}
-#aimod .chk{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--mut);margin:0 0 8px}
-#aimod .chk input{width:auto;margin:0}
 #home,#svx{flex:none;min-width:0;padding:6px 12px;font-size:13px}
 #home{display:none}
-#aicog{flex:none;min-width:0;padding:6px 12px;font-size:13px;margin-left:auto}
-@media (prefers-reduced-motion:reduce){#title .in,#aimod .box{animation:none}}
+@media (prefers-reduced-motion:reduce){#title .in{animation:none}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wsel{position:fixed;inset:0;z-index:30;overflow:hidden;background:#0b0e16;color:#fff;-webkit-user-select:none;user-select:none}
-.wsel:focus-visible{outline:2px solid var(--ac);outline-offset:-4px}
+.wsel:focus-visible{outline:2px solid var(--ac);outline-offset:-4px}#setup button:focus,#setup button:focus-visible,#setup .wsel:focus,#setup .wsel:focus-visible{outline:none;box-shadow:none}
 .wsel small{color:inherit}
 .wsel-bg{position:absolute;inset:0}
 .wsel-bgi{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .8s ease;will-change:opacity}
@@ -219,35 +204,14 @@ small{color:var(--mut)}
 <body>
 <div id="toasts"></div>
 <main>
-<h1 id="topbar"><span class="sr">Tale Table</span><button id="home" title="메인 타이틀로 돌아가기">◀ 타이틀</button><button id="svx" title="저장하고 타이틀로 나가기 (3턴마다 자동 저장)">💾 저장하고 나가기</button><button id="aicog" style="display:none" title="AI 연결 설정">🔌 AI 설정</button></h1>
+<h1 id="topbar"><span class="sr">Tale Table</span><button id="home" title="메인 타이틀로 돌아가기">◀ 타이틀</button><button id="svx" title="저장하고 타이틀로 나가기 (3턴마다 자동 저장)">💾 저장하고 나가기</button></h1>
 <div id="title" style="display:none"><div class="in">
 <div class="logo">⚔️</div><h2>Tale Table</h2>
 <p class="sub">AI 게임 마스터와 함께하는 나만의 TRPG</p>
 <p class="wl">어둠의 던전 · 네온 도시 · 폐우주정거장</p>
-<a href="https://claude.ai/artifact/M2Ebvt1csWb9ezcwmfuFSE" target="_blank" rel="noopener" id="tlogin" class="tb p" style="text-decoration:none;box-sizing:border-box">🔑 Claude 로그인하고 플레이</a>
 <button id="tcont" class="tb p" style="display:none">📂 이어하기</button>
 <button id="tstart" class="tb p" style="display:none">시작하기</button>
-<button id="tapi" class="tb s">🔌 플레이어 API 연결</button>
-<button id="tsaved" class="saved" style="display:none"></button>
-<p class="note" id="tnote">Claude 계정이 있으면 로그인만으로 플레이할 수 있어요.<br>다른 AI를 쓰려면 본인 API 키를 연결하세요.</p>
-</div></div>
-<div id="aimod" role="dialog" aria-modal="true" aria-labelledby="aimodt"><div class="box">
-<div class="hd"><b id="aimodt">🔌 플레이어 API 연결</b><button class="x" id="aiclose" aria-label="닫기">✕</button></div>
-<label for="aiprov">AI 서비스</label>
-<select id="aiprov">
-<option value="anthropic">Claude (Anthropic API)</option>
-<option value="gemini">Gemini (Google AI Studio)</option>
-<option value="openrouter">OpenRouter (GPT·Claude·Gemini 등)</option>
-</select>
-<label for="aikey">API 키 <a id="aikeylink" href="#" target="_blank" rel="noopener" style="font-size:12px"></a></label>
-<input id="aikey" type="password" autocomplete="off" spellcheck="false" placeholder="API 키를 붙여 넣으세요">
-<label for="aimodel">모델 <button id="ailist" type="button" style="flex:none;min-width:0;padding:1px 8px;font-size:12px;margin-left:4px">목록 불러오기</button></label>
-<input id="aimodel" list="aimodels" autocomplete="off" spellcheck="false">
-<datalist id="aimodels"></datalist>
-<div class="chk"><input type="checkbox" id="airem" checked><label for="airem" style="margin:0;color:inherit">이 브라우저에 키 기억하기</label></div>
-<div id="aist" class="st"></div>
-<div class="btns"><button class="p" id="aisave">연결하고 시작</button><button id="aidel" style="flex:none">키 삭제</button></div>
-<p class="warn">🔐 키는 이 브라우저에만 저장되고 선택한 AI 회사 서버로만 전송됩니다. 요금은 키 주인에게 청구됩니다. 공용 PC에서는 "기억하기"를 끄세요.</p>
+<p class="note" id="tnote">Claude 계정이 있으면 원활하게 플레이할 수 있어요!<br><a href="https://claude.ai/artifact/M2Ebvt1csWb9ezcwmfuFSE" target="_blank" rel="noopener" id="tlink">Claude 계정 연결하기</a></p>
 </div></div>
 <div id="fx" aria-hidden="true"></div>
 <div id="dlg" role="dialog" aria-modal="true" style="display:none"><div class="dbox"><p id="dmsg"></p><div class="btns"><button id="dno">취소</button><button class="p" id="dok">확인</button></div><button id="dxb" style="display:none;width:100%;margin-top:8px"></button></div></div>
@@ -273,13 +237,14 @@ small{color:var(--mut)}
 </main>
 <script>
 const _g=id=>document.getElementById(id);
-/* ===== BYOK AI 어댑터 ===== */
-const AIP={
- anthropic:{model:"claude-haiku-5-5",link:"https://console.anthropic.com/settings/keys",lt:"키 발급"},
- gemini:{model:"gemini-flash-latest",link:"https://aistudio.google.com/apikey",lt:"키 발급"},
- openrouter:{model:"openrouter/auto",link:"https://openrouter.ai/settings/keys",lt:"키 발급"}};
-const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
-let AICFG={prov:(p=>AIP[p]?p:"anthropic")(LS.get("tt_ai_prov")),model:LS.get("tt_ai_model")||"",key:LS.get("tt_ai_key")||""};
+/* ===== AI 어댑터: claude.ai 안이면 계정 연결, 밖(로그인 없이 플레이)이면 내장 Gemini 키 ===== */
+/* 키 난독화: 솔트 해시 → xorshift 난수열로 조각 순서·XOR 마스크를 만들고 가짜 조각을 섞어 둠 (보기 어렵게 할 뿐 암호화는 아님) */
+/* GitHub 공개본: API 키는 보안을 위해 제거했습니다. 직접 실행하려면 아래 따옴표 안에 본인 Gemini API 키를 넣으세요.
+   (키를 넣은 파일은 공개 저장소에 올리지 마세요. 키가 없으면 claude.ai 밖에서는 기본 서술로 진행됩니다.) */
+const GEMINI_API_KEY="";
+const _k=()=>GEMINI_API_KEY;
+
+["tt_ai_prov","tt_ai_model","tt_ai_key"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});   /* 예전 '플레이어 API 연결'로 저장된 키 정리 */
 const inClaude=()=>!!(window.claude&&typeof window.claude.use==="function");
 function pickJSON(t){
   t=String(t||"").replace(/```(?:json)?/gi,"");
@@ -287,99 +252,187 @@ function pickJSON(t){
   if(i<0||j<i)throw new Error("JSON 응답 없음");
   return JSON.parse(t.slice(i,j+1));
 }
-async function callByok(c,prompt){
-  const sys="You are the game master engine of a Korean TRPG. Follow the instructions exactly and reply with a single valid JSON object only, no markdown.";
-  let r,d,t;
-  if(c.prov==="anthropic"){
-    r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":c.key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
-      body:JSON.stringify({model:c.model,max_tokens:1500,system:sys,messages:[{role:"user",content:prompt}]})});
-    d=await r.json(); if(!r.ok)throw new Error(d.error?.message||("HTTP "+r.status));
-    t=(d.content||[]).filter(x=>x.type==="text").map(x=>x.text).join("");
-  }else if(c.prov==="gemini"){
-    r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(c.model)}:generateContent`,{method:"POST",headers:{"content-type":"application/json","x-goog-api-key":c.key},
-      body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:"user",parts:[{text:prompt}]}],generationConfig:{responseMimeType:"application/json",maxOutputTokens:2048}})});
-    d=await r.json(); if(!r.ok)throw new Error(d.error?.message||("HTTP "+r.status));
-    t=(d.candidates?.[0]?.content?.parts||[]).map(x=>x.text||"").join("");
-  }else if(c.prov==="openrouter"){
-    r=await fetch("https://openrouter.ai/api/v1/chat/completions",{method:"POST",headers:{"content-type":"application/json","Authorization":"Bearer "+c.key,"X-Title":"Tale Table"},
-      body:JSON.stringify({model:c.model,max_tokens:1500,messages:[{role:"system",content:sys},{role:"user",content:prompt}]})});
-    d=await r.json(); if(!r.ok)throw new Error(d.error?.message||("HTTP "+r.status));
-    t=d.choices?.[0]?.message?.content||"";
-  }else throw new Error("AI 꺼짐");
-  return pickJSON(t);
+/* 모델 자동 교체: 3.5 Flash Lite ↔ 3.1 Flash Lite. 한도(429: RPM·TPM·RPD)나 과부하(503)가 오면 다른 모델로 바꿔 재시도하고,
+   한도에 걸린 모델은 잠시 쉬게 함(분당 한도는 서버가 알려 준 시간/60초, 일일 한도는 30분) */
+const GM=["gemini-3.5-flash-lite","gemini-3.1-flash-lite"],_cool=[0,0];let _cur=0,_id31=null;
+async function _gmId(i){
+  if(i===0)return GM[0];if(_id31)return _id31;
+  try{   // 3.1 Flash Lite의 정확한 모델 ID를 목록에서 찾음(미리보기 이름 등 대응)
+    const r=await fetch("https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000",{headers:{"x-goog-api-key":_k()}});
+    const d=await r.json(),m=(d.models||[]).map(x=>String(x.name||"").replace(/^models\//,"")).filter(n=>/^gemini-3\.1-flash-lite/.test(n)&&!/image|tts|live|audio/.test(n));
+    m.sort((a,b)=>a.length-b.length);if(m[0])_id31=m[0];
+  }catch(e){}
+  return _id31||GM[1];
 }
-function byokAdapter(c){return{json:(prompt)=>callByok(c,prompt)}}
-/* 게임 코드가 부르는 진입점: claude.ai 안이면 계정 연결, 밖이면 BYOK */
+async function _callGemini(prompt){
+  const sys="You are the game master engine of a Korean TRPG. Follow the instructions exactly and reply with a single valid JSON object only, no markdown.";
+  const body=JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:"user",parts:[{text:prompt}]}],generationConfig:{responseMimeType:"application/json",maxOutputTokens:2048}});
+  let err;
+  for(let n=0;n<4;n++){
+    const now=Date.now();let i=_cur;const pin=_dev.on&&_dev.pin!=null?_dev.pin:null;
+    if(pin!=null)i=pin;
+    else if(_cool[i]>now){if(_cool[1-i]<=now)i=1-i;else throw err||new Error("AI 한도 초과 — 잠시 후 다시 시도됩니다")}   // 쉬는 중이면 다른 모델, 둘 다 쉬면 요청을 보내지 않음(기본 문구로 진행)
+    _cur=i;
+    const model=await _gmId(i);
+    let r,d;
+    try{
+      r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,{method:"POST",headers:{"content-type":"application/json","x-goog-api-key":_k()},body});
+      d=await r.json();
+    }catch(e){throw e}
+    if(r.ok){_last=model;return pickJSON((d.candidates?.[0]?.content?.parts||[]).map(x=>x.text||"").join(""))}
+    err=new Error(d.error?.message||("HTTP "+r.status));
+    if(pin!=null)throw err;   // 개발자 모드에서 모델을 고정한 경우: 자동 교체 없이 그대로 실패 처리
+    if(r.status===429){
+      const raw=JSON.stringify(d.error||{}),daily=/per ?day|PerDay/i.test(raw);
+      const rd=/"retryDelay":"([\d.]+)s"/.exec(raw);
+      _cool[i]=now+(daily?30*60e3:Math.max(15e3,(rd?parseFloat(rd[1])*1000:60e3)));
+      _cur=1-i;continue;
+    }
+    if(r.status===503||r.status===500||r.status===404){   // 과부하/모델 없음: 잠깐 쉬게 하고 다른 모델로
+      _cool[i]=now+(r.status===404?30*60e3:10e3);_cur=1-i;
+      await new Promise(res=>setTimeout(res,600));continue;
+    }
+    throw err;
+  }
+  throw err;
+}
+
+/* ===== 개발자 모드(숨김): 타이틀에서 코나미 코드 ↑↑↓↓←→←→ B A Enter 입력 시 활성화 ===== */
+let _last="",_lastErr="";
+const _dev=(()=>{try{return Object.assign({on:false,pin:null},JSON.parse(sessionStorage.getItem("tt_dev")||"{}"))}catch(e){return{on:false,pin:null}}})();
+const _devSave=()=>{try{sessionStorage.setItem("tt_dev",JSON.stringify(_dev))}catch(e){}};
+function _devOff(silent){   /* 개발자 모드 끄기: 상태 초기화 + 버튼·패널 제거 */
+  _dev.on=false;_dev.pin=null;_devSave();
+  ["devbadge","devpanel"].forEach(i=>{const n=document.getElementById(i);if(n)n.remove()});
+  if(!silent)_devToast("개발자 모드가 비활성화되었습니다");
+}
+const _devWarn=()=>_dev.on?"\n\n개발자 모드가 비활성화됩니다.":"";
+async function callGemini(prompt){
+  try{const r=await _callGemini(prompt);_lastErr="";return r}
+  catch(e){_lastErr=String(e&&e.message||e).slice(0,160);throw e}
+  finally{_devRefresh()}
+}
+function _devRefresh(){
+  const b=document.getElementById("devbadge");if(!b)return;
+  const m=_last?(/3\.5/.test(_last)?"3.5":/3\.1/.test(_last)?"3.1":_last):"–";
+  b.textContent="🛠 개발자 옵션"+(_lastErr?" ⚠":"");b.title=(_dev.pin==null?"자동":_dev.pin===0?"3.5 고정":"3.1 고정")+" · 최근 "+m;
+  const st=document.getElementById("devst");if(!st)return;
+  const now=Date.now(),cd=i=>_cool[i]>now?`쉬는 중 ${Math.ceil((_cool[i]-now)/1000)}초`:"사용 가능";
+  st.innerHTML=`최근 사용 모델: <b>${_last||"없음"}</b><br>3.5 Flash Lite: ${cd(0)}<br>3.1 Flash Lite: ${cd(1)}${_id31?` (${_id31})`:""}`+(_lastErr?`<br><span style="color:var(--bad)">최근 오류: ${_lastErr.replace(/</g,"&lt;")}</span>`:"");
+  document.querySelectorAll('#devpanel input[name="devm"]').forEach(x=>x.checked=(x.value==="auto"?_dev.pin==null:+x.value===_dev.pin));
+}
+function _devToast(msg){
+  let t=document.getElementById("devtoast");
+  if(!t){t=document.createElement("div");t.id="devtoast";t.setAttribute("role","status");document.body.appendChild(t);
+    if(!document.getElementById("devcss")){const c=document.createElement("style");c.id="devcss";c.textContent="#devtoast{position:fixed;left:50%;top:max(14px,env(safe-area-inset-top));transform:translateX(-50%);z-index:320;background:rgba(10,12,20,.92);color:#9fe8b4;border:1px solid rgba(159,232,180,.5);padding:9px 16px;border-radius:12px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.4);opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}#devtoast.on{opacity:1}";document.head.appendChild(c)}}
+  t.textContent=msg;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),2200);
+}
+function _devUI(){
+  if(document.getElementById("devbadge"))return;
+  const css=document.createElement("style");
+  css.textContent="#devbadge{position:fixed;right:6px;top:max(6px,env(safe-area-inset-top));z-index:300;font:11px/1.2 system-ui,sans-serif;padding:5px 8px;opacity:.9;border-radius:10px;border:1px solid rgba(255,255,255,.35);background:rgba(10,12,20,.85);color:#9fe8b4;cursor:pointer;min-width:0;max-width:calc(100vw - 16px);white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.35)}#devtoast{position:fixed;left:50%;top:max(14px,env(safe-area-inset-top));transform:translateX(-50%);z-index:320;background:rgba(10,12,20,.92);color:#9fe8b4;border:1px solid rgba(159,232,180,.5);padding:9px 16px;border-radius:12px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.4);opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}#devtoast.on{opacity:1}#devpanel #devoff{color:#c0392b;border-color:#c0392b}#devpanel{position:fixed;inset:0;z-index:310;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(5,7,12,.55)}#devpanel.on{display:flex}#devpanel .bx{width:100%;max-width:340px;background:var(--card,#fff);color:var(--tx,#111);border:1px solid var(--bd,#ccc);border-radius:14px;padding:14px 16px;font-size:14px;box-shadow:0 18px 50px rgba(0,0,0,.45)}#devpanel label{display:flex;gap:8px;align-items:center;margin:6px 0;cursor:pointer}#devpanel input{width:auto;margin:0}#devpanel .row2{display:flex;gap:8px;margin-top:10px}#devpanel .row2 button{flex:1;min-width:0;padding:7px 4px;font-size:13px}#devst{font-size:12px;line-height:1.6;margin-top:8px;color:var(--mut,#666)}";
+  document.head.appendChild(css);
+  const b=document.createElement("button");b.id="devbadge";b.type="button";document.body.appendChild(b);
+  const p=document.createElement("div");p.id="devpanel";
+  p.innerHTML='<div class="bx"><b>🛠 개발자 모드</b><div style="margin:8px 0 2px;font-size:13px">AI 모델</div><label><input type="radio" name="devm" value="auto"> 자동 교체 (기본)</label><label><input type="radio" name="devm" value="0"> Gemini 3.5 Flash Lite 고정</label><label><input type="radio" name="devm" value="1"> Gemini 3.1 Flash Lite 고정</label><div id="devst"></div><div class="row2"><button id="devreset">대기 해제</button><button id="devx" class="p">닫기</button></div><div class="row2"><button id="devoff">개발자 모드 끄기</button></div></div>';
+  document.body.appendChild(p);
+  const open=()=>{_devRefresh();p.classList.add("on")},close=()=>p.classList.remove("on");
+  b.onclick=open;p.onclick=e=>{if(e.target===p)close()};
+  p.querySelectorAll('input[name="devm"]').forEach(x=>x.onchange=()=>{_dev.pin=x.value==="auto"?null:+x.value;_devSave();_devRefresh()});
+  document.getElementById("devx").onclick=close;
+  document.getElementById("devreset").onclick=()=>{_cool[0]=_cool[1]=0;_cur=0;_lastErr="";_devRefresh()};
+  document.getElementById("devoff").onclick=()=>{_dev.on=false;_dev.pin=null;_devSave();close();b.remove();p.remove();_devToast("개발자 모드가 비활성화되었습니다")};
+  _devRefresh();setInterval(()=>{if(p.classList.contains("on"))_devRefresh()},1000);
+}
+(()=>{
+  /* 코나미 코드: 타이틀이 아닌 화면에서만, Claude 연결 없이 플레이할 때만. ↑↑↓↓←→←→ B A 까지는 화면이 그대로 움직이고,
+     마지막 Enter 는 개발자 모드 진입에만 쓰인다(화면 이동 없음). 코드 도중에 누른 Enter 는 평소처럼 동작한다. */
+  const seq=["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","KeyB","KeyA","Enter"];let pos=0;
+  _dev.on=false;_dev.pin=null;_devSave();   // 페이지는 항상 타이틀에서 시작 → 개발자 모드는 꺼진 상태
+  const vis=el=>el&&el.getClientRects().length>0&&getComputedStyle(el).visibility!=="hidden";
+  document.addEventListener("keydown",e=>{
+    if(["Shift","Control","Alt","Meta","CapsLock","Process"].includes(e.key)&&e.code!=="KeyB"&&e.code!=="KeyA")return;
+    const dl=document.getElementById("dlg");
+    if(inClaude()||_dev.on||vis(document.getElementById("title"))||(dl&&getComputedStyle(dl).display!=="none")||e.ctrlKey||e.altKey||e.metaKey){pos=0;return}
+    const k=(e.key.startsWith("Arrow")||e.key==="Enter")?e.key:e.code;
+    if(k===seq[pos]){
+      if(pos===seq.length-1){   // 마지막 Enter: 화면 이동 없이 개발자 모드만 켠다
+        e.preventDefault();e.stopPropagation();pos=0;_dev.on=true;_devSave();_devUI();_devRefresh();_devToast("개발자 모드가 활성화되었습니다");return;
+      }
+      pos++;
+      if((k==="KeyB"||k==="KeyA")&&/^(INPUT|TEXTAREA)$/.test((e.target||{}).tagName))e.preventDefault();   // 입력칸에 b·a 가 찍히지 않게
+    }else pos=(k===seq[0])?1:0;
+  },true);
+})();
+/* 세계관·직업 선택: 방향키 ←/→ 로 넘기고 Enter 로 확정 */
+document.addEventListener("keydown",e=>{
+  if(e.defaultPrevented||e.isComposing||e.ctrlKey||e.altKey||e.metaKey)return;
+  const t=e.target;if(t&&/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))return;
+  const dl=document.getElementById("dlg");if(dl&&getComputedStyle(dl).display!=="none")return;
+  const dp=document.getElementById("devpanel");if(dp&&dp.classList.contains("on"))return;
+  const vis=el=>el&&el.getClientRects().length>0&&getComputedStyle(el).visibility!=="hidden";
+  const ti=document.getElementById("title");
+  if(vis(ti)){   /* 타이틀: Enter = 시작하기 */
+    if(e.key==="Enter"&&!e.repeat&&!(t&&/^(BUTTON|A)$/.test(t.tagName))){const b=document.getElementById("tstart");if(b&&vis(b)&&window.TT_ready){b.click();e.preventDefault()}}
+    return;
+  }
+  const st2=document.getElementById("st2");
+  if(e.key==="Escape"&&!e.repeat){   /* ESC = 타이틀로 */
+    const home=[st2,document.getElementById("cc"),document.getElementById("wc")].some(vis)?document.getElementById("toTitle"):null;
+    if(home){home.click();e.preventDefault();return}
+  }
+  if(e.key==="Backspace"&&!e.repeat){   /* Backspace = 뒤로(직업 다시 선택 / 세계관 다시 선택) */
+    const b=vis(st2)?document.getElementById("back2"):vis(document.getElementById("cc"))?document.getElementById("csBack"):null;
+    if(b){b.click();e.preventDefault()}
+    if(b)return;
+  }
+  if(vis(st2)){   /* 능력치 조정: ↑↓ 줄 선택, ←→ 포인트 조정, Enter 모험 시작 */
+    if(e.key==="ArrowUp"||e.key==="ArrowDown"||e.key==="ArrowLeft"||e.key==="ArrowRight"){
+      e.preventDefault();
+      if(kbRow<0)kbRow=0;   // 처음 누르면 선택 박스만 표시
+      else if(e.key==="ArrowUp"||e.key==="ArrowDown")kbRow=(kbRow+(e.key==="ArrowDown"?1:2))%3;
+      else{const b=st2.querySelector(`[data-${e.key==="ArrowRight"?"p":"m"}="${STATS[kbRow]}"]`);if(b){b.click();return}}
+      st2.querySelectorAll(".row").forEach((r,i)=>r.classList.toggle("kb",i===kbRow));
+    }else if(e.key==="Enter"&&!e.repeat){
+      if(t&&t.tagName==="BUTTON")return;
+      const g=document.getElementById("go");if(g){g.click();e.preventDefault()}
+    }
+    return;
+  }
+  const root=[document.getElementById("wc"),document.getElementById("cc")].find(vis);if(!root)return;
+  if(e.key==="ArrowLeft"||e.key==="ArrowRight"){
+    const b=root.querySelector(".wsel-ar."+(e.key==="ArrowLeft"?"l":"r"));if(b){b.click();e.preventDefault()}
+  }else if(e.key==="Enter"&&!e.repeat){
+    if(t&&t.tagName==="BUTTON")return;   // 버튼에 포커스가 있으면 기본 동작(그 버튼 실행)
+    const b=document.getElementById("nextS")||document.getElementById("csNext");if(b){b.click();e.preventDefault()}
+  }
+});
+/* 게임 코드가 부르는 진입점 */
 async function getAI(){
   if(inClaude()){try{return (await window.claude.use("sample"))||false}catch(e){return false}}
-  if(AIP[AICFG.prov]&&AICFG.key)return byokAdapter({...AICFG,model:AICFG.model||AIP[AICFG.prov].model});
-  return false;
-}
-async function listModels(prov,key){
-  if(prov==="anthropic"){const r=await fetch("https://api.anthropic.com/v1/models?limit=100",{headers:{"x-api-key":key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"}});const d=await r.json();if(!r.ok)throw new Error(d.error?.message||r.status);return d.data.map(m=>m.id)}
-  if(prov==="gemini"){const r=await fetch("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200",{headers:{"x-goog-api-key":key}});const d=await r.json();if(!r.ok)throw new Error(d.error?.message||r.status);return d.models.filter(m=>(m.supportedGenerationMethods||[]).includes("generateContent")).map(m=>m.name.replace(/^models\//,""))}
-  if(prov==="openrouter"){const r=await fetch("https://openrouter.ai/api/v1/models");const d=await r.json();if(!r.ok)throw new Error(r.status);return d.data.map(m=>m.id)}
-  return [];
+  return {json:callGemini};
 }
 function initAICfg(){
-  const T=_g("title"),M=_g("aimod");
-  const PN={anthropic:"Claude API",gemini:"Gemini",openrouter:"OpenRouter"};
+  const T=_g("title");
   try{if(typeof IMG!=="undefined"&&IMG[0])T.style.backgroundImage=`url("${IMG[0]}")`}catch(e){}
+  T.style.display="flex";
+  _g("tstart").style.display="";_g("tstart").onclick=()=>window.TT_new();window.TT_ready=true;
   if(inClaude()){            // claude.ai 안: 계정 연결이 이미 되어 있으므로 시작 버튼만
-    _g("tlogin").style.display="none";_g("tapi").style.display="none";
-    _g("tstart").style.display="";_g("tstart").onclick=()=>window.TT_new();window.TT_ready=true;window.TT_title&&window.TT_title();
     _g("tnote").textContent="✓ Claude 계정으로 연결되었어요. 모험을 시작해 볼까요?";
-    T.style.display="flex";return;
-  }
-  T.style.display="flex";_g("aicog").style.display="";
-  const st=(t,ok)=>{_g("aist").textContent=t;_g("aist").className="st "+(ok===true?"ok":ok===false?"no":"")};
-  const ready=()=>{   // 연결 완료 → 타이틀에 시작하기
-    _g("tlogin").style.display="none";_g("tsaved").style.display="none";
-    _g("tstart").style.display="";_g("tapi").textContent="🔌 연결 변경";window.TT_ready=true;window.TT_title&&window.TT_title();
-    _g("tnote").textContent=`✓ ${PN[AICFG.prov]} 연결됨 (${AICFG.model||AIP[AICFG.prov].model}). 모험을 시작해 볼까요?`;
-  };
-  _g("tstart").onclick=()=>window.TT_new();
-  const savedLine=()=>{const b=_g("tsaved");if(AICFG.key&&AIP[AICFG.prov]){b.style.display="";b.textContent=`✓ 저장된 연결로 시작 (${PN[AICFG.prov]} · ${AICFG.model||AIP[AICFG.prov].model})`}else b.style.display="none"};
-  const sync=()=>{const p=_g("aiprov").value;_g("aikeylink").href=AIP[p].link;_g("aikeylink").textContent="(키 발급 ↗)";_g("aimodel").placeholder=AIP[p].model};
-  const open=()=>{_g("aiprov").value=AIP[AICFG.prov]?AICFG.prov:"anthropic";_g("aikey").value=AICFG.key;_g("aimodel").value=AICFG.model;sync();
-    st(AICFG.key?"저장된 키가 있습니다.":"",AICFG.key?true:null);M.classList.add("on");setTimeout(()=>_g(AICFG.key?"aisave":"aikey").focus(),50)};
-  const close=()=>M.classList.remove("on");
-  savedLine();
-  _g("tapi").onclick=open;_g("aicog").onclick=open;_g("aiclose").onclick=close;
-  M.onclick=e=>{if(e.target===M)close()};
-  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&M.classList.contains("on"))close()});
-  _g("tsaved").onclick=ready;
-  _g("aiprov").onchange=()=>{const p=_g("aiprov").value;_g("aikey").value=p===AICFG.prov?AICFG.key:"";_g("aimodel").value=p===AICFG.prov?AICFG.model:"";_g("aimodels").innerHTML="";st("");sync()};
-  _g("aisave").onclick=async()=>{
-    const c={prov:_g("aiprov").value,key:_g("aikey").value.trim(),model:_g("aimodel").value.trim()};
-    if(!c.key){st("API 키를 입력하세요.",false);_g("aikey").focus();return}
-    c.model=c.model||AIP[c.prov].model;
-    const btn=_g("aisave");btn.disabled=true;st("연결 테스트 중…");
-    try{
-      const j=await callByok(c,'연결 테스트입니다. {"ok":true} 만 JSON으로 답하세요.');
-      if(!j||j.ok!==true)throw new Error("예상과 다른 응답");
-      AICFG=c;_g("aimodel").value=c.model;
-      LS.set("tt_ai_prov",c.prov);LS.set("tt_ai_model",c.model);
-      if(_g("airem").checked)LS.set("tt_ai_key",c.key);else LS.del("tt_ai_key");
-      st("연결 성공! ("+c.model+")",true);savedLine();
-      setTimeout(()=>{close();ready();_g("tstart").focus()},700);
-    }catch(e){
-      const m=String(e.message||e);
-      st("실패: "+(/Failed to fetch|NetworkError|Load failed/i.test(m)?"네트워크/CORS 차단입니다. 웹 주소(https)로 올린 페이지에서 다시 시도해 주세요.":m.slice(0,140)),false);
-    }finally{btn.disabled=false}
-  };
-  _g("ailist").onclick=async()=>{
-    const p=_g("aiprov").value,k=_g("aikey").value.trim();
-    if(p!=="openrouter"&&!k){st("목록을 보려면 키가 필요합니다.",false);return}
-    st("모델 목록 불러오는 중…");
-    try{const ids=await listModels(p,k);_g("aimodels").innerHTML=ids.map(i=>`<option value="${i}">`).join("");st(`모델 ${ids.length}개 — 모델 칸을 눌러 고르세요.`,true);_g("aimodel").focus()}
-    catch(e){st("목록 실패: "+String(e.message||e).slice(0,100),false)}
-  };
-  _g("aidel").onclick=()=>{LS.del("tt_ai_key");AICFG.key="";_g("aikey").value="";st("키를 삭제했습니다.",false);savedLine()};
+  }else window.TT_guest=true;   // 로그인 없이 플레이
+  window.TT_title&&window.TT_title();
 }
 window.addEventListener("DOMContentLoaded",initAICfg);
 </script>
 <script>
+/* ===== 문체·표현 사전 설정 (모델이 바뀌어도 같은 문체가 유지되도록 모든 서술 프롬프트에 넣음) ===== */
+const STYLE_BASE="2인칭 시점('당신')의 현재형 평서문(~다)으로 쓴다. 짧고 단정한 문장을 쓰고 한 문장은 60자를 넘기지 않는다. 장면마다 소리·냄새·빛·온도 중 한 가지 이상의 감각을 넣는다. 대사는 큰따옴표로 쓰고 NPC 설정의 말투를 우선한다. 이모지, 영어 단어, 게임 용어(HP·주사위·판정·수치), 메타 발언, '다음은'·'물론' 같은 서두, 이전 장면의 반복 요약, 존댓말 서술('~했습니다')은 쓰지 않는다.";
+const STYLE_W=[
+ "어둡고 무거운 다크 판타지 어조. 안개·폐허·촛불·녹슨 쇠 같은 고풍스러운 어휘를 쓰고 비유는 절제한다. 공포는 직접 묘사하기보다 암시한다.",
+ "건조하고 냉소적인 사이버펑크 느와르 어조. 비·네온·합성 조명·젖은 아스팔트 같은 도시 이미지를 쓰고 단문을 끊어 쓴다. 기업과 거리의 은어를 가볍게 섞되 과하지 않게 한다.",
+ "차갑고 절제된 SF 공포 어조. 정적과 기계 소음의 대비, 격벽·환기구·비상등 같은 설비 이미지를 쓰고 긴장을 천천히 쌓는다. 설명보다 징후를 보여 준다."];
+const styleGuide=()=>{const i=typeof W!=="undefined"&&W?WORLDS.indexOf(W):-1;return STYLE_BASE+(STYLE_W[i]?" "+STYLE_W[i]:"")};
+const HIST_N=8,HIST_C=90;   /* 프롬프트에 넣는 최근 이야기 개수 / 항목당 글자 수 */
 const d=n=>1+Math.floor(Math.random()*n);
 const $=id=>document.getElementById(id);
 let S, sample=null, busy=false;
@@ -391,10 +444,12 @@ function ask(msg,okT,noT,xT){return new Promise(res=>{
   document.getElementById("dmsg").textContent=msg;ok.textContent=okT||"확인";no.textContent=noT||"취소";no.style.display=noT===null?"none":"";
   d.style.display="flex";ok.focus();
   const end=v=>{d.style.display="none";ok.onclick=no.onclick=xb.onclick=null;document.removeEventListener("keydown",kd,true);res(v)};
-  const kd=e=>{if(e.key==="Escape"){e.stopPropagation();end(false)}};
+  const kd=e=>{if(e.key==="Escape"){e.stopPropagation();end(false)}else if(e.key==="Backspace"&&no.style.display!=="none"&&!/^(INPUT|TEXTAREA)$/.test((e.target||{}).tagName)){e.stopPropagation();e.preventDefault();end(false)}};   /* Backspace = 취소(취소 버튼이 있는 창만) */
   document.addEventListener("keydown",kd,true);ok.onclick=()=>end(true);no.onclick=()=>end(false);xb.onclick=()=>end("x");
 })}
 const say=msg=>ask(msg,"확인",null);
+/* 직업·능력치 선택 화면에서 타이틀로 돌아갈 때는 확인 창을 거친다 */
+function homeAsk(){ask("타이틀로 돌아갈까요?"+_devWarn(),"타이틀로","취소").then(ok=>{if(ok===true&&window.TT_home)window.TT_home()})}
 let _xfB=false;
 function xf(fn){                         /* 화면 전환 페이드: 어두워짐 → 화면 교체 → 밝아짐 */
   if(_xfB)return;const f=document.getElementById("fx");
@@ -444,7 +499,7 @@ const ITM=()=>W.items;
 const kw=n=>(ITM().find(x=>x.n===n)||{w:"\u0000"}).w;
 const STATS=["힘","민첩","지혜"];
 const STH={힘:"무기로 맞붙는 공격, 문을 부수거나 무거운 것을 드는 등 힘쓰는 행동",민첩:"도주, 몰래 하는 행동(잠입·훔치기), 재빠른 공격",지혜:"마법 공격, 대화·설득·흥정, 단서를 찾는 탐색과 관찰"};
-let pick=0, add0={힘:0,민첩:0,지혜:0};
+let pick=0, add0={힘:0,민첩:0,지혜:0}, kbRow=-1;   /* kbRow: 방향키로 고른 능력치 줄(-1=표시 없음) */
 const left=()=>2-STATS.reduce((a,k)=>a+add0[k],0);
 const val=k=>CLS[pick].st[k]+add0[k];
 
@@ -457,7 +512,7 @@ function initCC(){
   const root=$("cc"),stage=root.querySelector(".cc-stage"),cards=[...root.querySelectorAll(".cc-c")],dots=[...document.querySelectorAll(".cc-dots button")],bl=root.querySelector(".wsel-ar.l"),br=root.querySelector(".wsel-ar.r"),n=CLS.length;
   const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   const WW=WORLDS[pickW];let idx=pick,drag=null;const prev=[];
-  $("toTitle").onclick=()=>{if(window.TT_home)window.TT_home()};
+  $("toTitle").onclick=()=>homeAsk();
   $("csBack").onclick=()=>xf(()=>{step=0;setup()});
   $("csNext").onclick=()=>xf(()=>{step=2;setup()});
   function fit(){                      /* 카드 크기를 화면(무대) 크기에 맞춤 */
@@ -541,7 +596,7 @@ function initWC(){
     pickW=idx;
     $("wcl").textContent=`${plainName(WORLDS[idx].name)} (${idx+1}/${n})`;
   }
-  $("toTitle").onclick=()=>{if(window.TT_home)window.TT_home()};
+  $("toTitle").onclick=()=>homeAsk();
   const bgbox=root.querySelector(".wsel-bg");
   /* 처음 보는 배경 이미지는 디코딩이 늦어 페이드 시작 때 툭 튀어 보일 수 있으므로 미리 디코딩 */
   bgs.forEach(b=>{const im=b.querySelector("img");if(im&&im.decode)im.decode().catch(()=>{})});
@@ -650,7 +705,7 @@ function setup(){
         <div class="st-art"><img src="${CIMG[pickW][pick]}" alt="${c.n} 일러스트" draggable="false"></div>
         <div class="st-right" id="str"><div class="st-panel" id="stp">
           <p style="margin:0 0 6px"><b>${c.i} ${c.n}</b> · HP ${c.hp}<br><small>${c.d}</small></p><b>능력치 (추가 포인트 ${left()}/2)</b>`
-    +STATS.map(k=>`<div class="row"><span>${k}${k===c.atk?" ⚔️":""}</span><span><button data-m="${k}" style="min-width:36px;flex:none;padding:2px 10px">−</button> <b>${val(k)}</b> <button data-p="${k}" style="min-width:36px;flex:none;padding:2px 10px">＋</button></span></div>`).join("")
+    +STATS.map((k,ki)=>`<div class="row${ki===kbRow?" kb":""}"><span>${k}${k===c.atk?" ⚔️":""}</span><span><button data-m="${k}" style="min-width:36px;flex:none;padding:2px 10px">−</button> <b>${val(k)}</b> <button data-p="${k}" style="min-width:36px;flex:none;padding:2px 10px">＋</button></span></div>`).join("")
     +`<div class="sthelp">${STATS.map(k=>`<div><b>${k}</b> ${STH[k]}</div>`).join("")}<small>행동을 할 때 d20 주사위에 해당 능력치를 더해 판정합니다. ⚔️는 ${c.n}의 공격에 쓰이는 능력치입니다.</small></div><p><small>능력치는 최대 5까지 올릴 수 있어요.</small></p>
         </div>
         <div class="cs-btns"><button id="back2">◀ 직업 다시 선택</button><button class="p" id="go">모험 시작</button></div>
@@ -683,12 +738,13 @@ function stFit(){
 }
 addEventListener("resize",()=>{if(document.querySelector(".st-wrap"))stFit()});
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(document.querySelector(".st-wrap"))stFit()});
+$("setup").addEventListener("pointerdown",()=>{if(kbRow>=0){kbRow=-1;document.querySelectorAll("#st2 .row.kb").forEach(r=>r.classList.remove("kb"))}});
 $("setup").onclick=e=>{
   const t=e.target.closest("button");if(!t||t.closest("#cc")||t.closest(".cc-nav")||(t.closest("#wc")&&t.id!=="nextS"))return;
   const d=t.dataset;
   const SC={nextS:1,toStat:2,back2:1,back:0};
-  if(t.id in SC){xf(()=>{step=SC[t.id];setup()});return}
-  if(t.id==="toTitle"){window.TT_home();return}
+  if(t.id in SC){kbRow=-1;xf(()=>{step=SC[t.id];setup()});return}
+  if(t.id==="toTitle"){homeAsk();return}
   if(t.id==="go"){
     const l=left(),c=CLS[pick],sum=STATS.map(k=>k+" "+val(k)).join(" · ");
     (l>0
@@ -828,6 +884,7 @@ async function opening(){
       sample=await getAI()||false;
       if(sample){
         const j=await sample.json(`당신은 ${W.tone} 분위기 TRPG의 게임 마스터입니다. 아래 프롤로그를 이어, 플레이어가 본격적으로 모험을 시작하는 도입 장면을 한국어 3~4문장으로 생생히 묘사하세요. 게임 수치와 규칙은 언급하지 마세요.
+문체 규칙(반드시 지키세요): ${styleGuide()}
 프롤로그: ${W.pro.join(" ")}
 플레이어: ${S.cls.n} / 시작 장소: ${L[0].n} – ${L[0].d} / 등장 인물(이름은 아직 알려지지 않았으니 직업으로만 지칭): ${npcsAt(L[0]).map(x=>shown(x.n)).join(", ")}
 JSON으로만 답하세요: {"narration":"..."}`,{cache:false});
@@ -844,7 +901,7 @@ JSON으로만 답하세요: {"narration":"..."}`,{cache:false});
   add("sys","🎬 인트로");
   const p=add("m","…");
   const t=await gen;
-  p.innerHTML=rich("["+L[0].n+"]\n"+t);S.hist.push(t.slice(0,60));
+  p.innerHTML=rich("["+L[0].n+"]\n"+t);S.hist.push(t.slice(0,HIST_C));
   add("sys","마을 사람들: "+npcsAt(L[0]).map(x=>shown(x.n)).join(", ")+". 말을 걸어 보거나, 다른 곳으로 이동해 보세요.");
   $("ctl").style.display="none";lock(false);
 }
@@ -984,13 +1041,14 @@ JSON만 답하세요: {"type":"","stat":"","difficulty":"","item":"","dest":"","
   render();
   const p=add("m","…"),lc=L[S.loc];
   const prompt=`당신은 ${W.tone} 분위기 TRPG의 게임 마스터입니다. 한국어로 2~3문장, 생생하게 묘사하세요.
+문체 규칙(반드시 지키세요): ${styleGuide()}
 규칙: 아래 판정 결과와 수치를 절대 바꾸지 말고, 새 피해나 아이템을 만들지 마세요. 플레이어가 원한 행동을 그대로 묘사하되 결과는 판정에 따르세요. NPC와 대화하는 경우 NPC 설정의 [성격]과 [말투]를 일관되게 지켜 대사를 큰따옴표로 포함하고(NPC 설정의 [숨은 사정]은 아래 공개 단계 지시를 반드시 따르고, 지시가 없으면 언급하지 마세요), 플레이어가 질문했다면 그 질문에 직접 답하세요(세계관 안에서 소문과 설정을 자유롭게 지어내도 되지만 게임 수치, 아이템, 보상, 의뢰 내용은 바꾸지 마세요). 대화는 3~4문장까지 허용합니다. 이동한 경우 새 장소의 분위기를 묘사하세요. 숫자는 언급하지 않아도 됩니다.
 플레이어 직업: ${S.cls.n}. 현재 장소: ${lc.n} – ${lc.d}. ${S.eh>0?"적: "+S.en+" (HP "+S.eh+"/"+S.emh+")":"적 없음"}. 플레이어 HP ${S.hp}/${S.mhp}.
 ${npcCtx}${S.qAvail?"의뢰 내용: "+W.q+".":""}
 플레이어 행동: “${txt}”
 결과: ${noRoll?"행동 결과":ok?"성공":"실패"} – ${res}
 ${fin?"엔딩 장면입니다. "+epi(fin)+" 엔딩: "+ENDS[fin].t+" – "+ENDS[fin].d+(fin==="bond"?" 이들이 배웅하거나 각자의 사연이 이어지는 장면을 포함하세요.":""):ev==="clear"?"적을 쓰러뜨려 전투가 끝났습니다.":""}
-최근 이야기: ${S.hist.slice(-3).join(" / ")}
+최근 이야기(오래된 순): ${S.hist.slice(-HIST_N).join(" / ")}
 ${tgN?'JSON으로만 답하세요(NPC 대화 형식): {"before":"대사 전 지문·묘사 1~2문장","line":"NPC의 대사만, 큰따옴표 없이","after":"대사 후 지문·묘사 1~2문장(엔딩이면 후일담 포함, 이 경우 분량은 엔딩 지시를 따르세요)"} — 지문에는 NPC의 대사를 넣지 마세요.':'JSON으로만 답하세요: {"narration":"..."}'}`;
   let out;
   try{
@@ -1000,7 +1058,7 @@ ${tgN?'JSON으로만 답하세요(NPC 대화 형식): {"before":"대사 전 지�
   }catch(e){
     out=tgN?`${npcLabel(tgN.n)}: "무슨 일이시죠?" (AI 연결 없이 기본 서술)`:(ok?"당신의 행동이 상황을 움직입니다.":"일이 뜻대로 풀리지 않습니다.")+" (AI 연결 없이 기본 서술)";
   }
-  S.hist.push(out.slice(0,60));if(L[S.loc]!==loc0)out=`[${L[S.loc].n}]\n`+out;
+  S.hist.push(out.slice(0,HIST_C));if(L[S.loc]!==loc0)out=`[${L[S.loc].n}]\n`+out;
   {const lab=tgN?npcLabel(tgN.n):null,paras=out.split(/\n{2,}/).map(x=>x.trim()).filter(Boolean);
   p.innerHTML=rich(paras[0]||out,lab);
   if(paras.length>1){                       /* 문단이 여러 개면 한 문단씩 차례로: 행동 버튼 대신 다음/자동/건너뛰기 */
@@ -1071,6 +1129,7 @@ setup();
     return true;
   }
   window.TT_title=function(){             // 타이틀의 이어하기 버튼 갱신 + 표시
+    _devOff(true);                        // 타이틀에서는 개발자 모드가 항상 꺼진다
     const T=document.getElementById("title"),g=read(),on=!!(g&&window.TT_ready);
     $("tcont").style.display=on?"":"none";
     T.classList.toggle("hasSave",on);
@@ -1085,11 +1144,12 @@ setup();
   $("home").onclick=async()=>{          // 직업·능력치·게임 화면의 타이틀 복귀 버튼
     const inGame=$("game").style.display!=="none";
     if(inGame){
-      if(S&&!S.over&&!(await ask("진행 중인 모험에서 나가 타이틀로 돌아갈까요?\n\n저장하지 않은 진행 상황은 사라질 수 있어요. (3턴마다 자동 저장되고, 아래의 '저장하고 나가기'로 직접 저장할 수도 있어요.)","타이틀로","계속 플레이")))return;
+      if(!(S&&!S.over)&&!(await ask("타이틀로 돌아갈까요?"+_devWarn(),"타이틀로","취소")))return;
+      if(S&&!S.over&&!(await ask("진행 중인 모험에서 나가 타이틀로 돌아갈까요?"+_devWarn()+"\n\n저장하지 않은 진행 상황은 사라질 수 있어요. (3턴마다 자동 저장되고, 아래의 '저장하고 나가기'로 직접 저장할 수도 있어요.)","타이틀로","계속 플레이")))return;
       const f=$("fx");f.classList.add("on");setTimeout(()=>location.reload(),280);   /* 진행 중인 장면/AI 응답을 확실히 끊기 위해 새로 시작 */
       return;
     }
-    window.TT_home();
+    homeAsk();
   };
   window.TT_home=function(){              // 세계관 선택 → 메인 타이틀로 복귀
     xf(()=>{$("setup").style.display="none";$("game").style.display="none";$("home").style.display="none";$("wbg").style.display="none";window.TT_title();const T=document.getElementById("title");T.style.display="flex";T.scrollTop=0});
@@ -1107,7 +1167,7 @@ setup();
   $("svx").onclick=async()=>{
     if(busy){say("진행 중인 장면이 끝난 뒤에 저장할 수 있어요.");return}
     if(S&&S.over){say("이미 끝난 모험입니다.");return}
-    if(!(await ask("현재 진행 상황을 저장하고 타이틀로 나갈까요?\n\n저장한 모험은 타이틀의 '이어하기'에서 다시 시작할 수 있어요.","저장하고 나가기","취소")))return;
+    if(!(await ask("현재 진행 상황을 저장하고 타이틀로 나갈까요?\n\n저장한 모험은 타이틀의 '이어하기'에서 다시 시작할 수 있어요."+_devWarn(),"저장하고 나가기","취소")))return;
     if(!save()){say("저장에 실패했습니다. (브라우저 저장 공간이 꺼져 있거나 가득 찼을 수 있어요)");return}
     toast("💾 저장했습니다","up");
     clearTimeout(window._svT);window._svT=setTimeout(()=>xf(()=>{window.TT_title();document.getElementById("title").style.display="flex";document.getElementById("title").scrollTop=0}),500);
