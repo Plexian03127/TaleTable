@@ -8,6 +8,8 @@ Tale Table은 **AI가 게임 마스터(GM)를 맡는 1인용 웹 TRPG**입니다
 
 ![타이틀 화면](docs/screenshots/01_title_guest.jpg)
 
+🌐 **게임 소개 페이지**: https://plexian03127.github.io/TaleTable/
+
 ## ▶ 플레이
 
 **로그인 없이 바로 플레이 가능, Claude 계정이 있으면 원활하게 플레이 가능**
@@ -16,7 +18,7 @@ Tale Table은 **AI가 게임 마스터(GM)를 맡는 1인용 웹 TRPG**입니다
 - **Claude 계정으로 플레이**: https://claude.ai/artifact/M2Ebvt1csWb9ezcwmfuFSE
   - Claude 계정으로 로그인하면 더 원활하게 플레이할 수 있습니다. AI 사용량은 플레이어 본인 Claude 요금제에서 차감되며, 서버나 API 키가 필요 없습니다.
 - **이 저장소의 파일로 실행하는 경우**
-  - ⚠️ 이 저장소의 `index.html`은 보안을 위해 **API 키를 뺀 공개본**입니다. 직접 실행하려면 파일 안의 `GEMINI_API_KEY=""`에 본인 Gemini API 키를 넣으세요. 키를 넣은 파일은 공개 저장소에 올리지 마세요. 키가 없으면 기본 서술로 진행됩니다.
+  - ⚠️ 이 저장소의 게임 파일 `play/index.html`은 보안을 위해 **API 키를 뺀 공개본**입니다. 직접 실행하려면 파일 안의 `GEMINI_API_KEY=""`에 본인 Gemini API 키를 넣으세요. 키를 넣은 파일은 공개 저장소에 올리지 마세요. 키가 없으면 기본 서술로 진행됩니다.
   - 파일을 더블클릭해 열 때 요청이 막히면 `python -m http.server` 실행 후 `http://localhost:8000` 으로 접속하세요.
 
 ## 🎮 주요 기능
@@ -56,7 +58,8 @@ Tale Table은 **AI가 게임 마스터(GM)를 맡는 1인용 웹 TRPG**입니다
 - **역할 분리 원칙**: AI = 해석과 서술 / 코드 = 숫자와 규칙. AI에게 계산을 맡기지 않아 일관성을 지킵니다.
 - **AI 연결 자동 전환**: claude.ai 아티팩트 안에서는 `window.claude.use("sample")`로 플레이어 계정 연결, 밖에서는 Gemini API 호출(두 모델 자동 교체).
 - **개발자 모드(숨김)**: 타이틀에서 ↑↑↓↓←→←→ B A Enter → 모델 고정·상태 확인용 옵션.
-- **단일 파일**: HTML·CSS·JS·일러스트(base64)가 `index.html` 하나에 들어 있습니다.
+- **단일 파일**: HTML·CSS·JS·일러스트(base64)가 `play/index.html` 하나에 들어 있습니다.
+- **소개 페이지**: 저장소 루트의 `index.html`(+ `assets/`)은 GitHub Pages로 배포되는 게임 소개 페이지입니다.
 
 ## 📸 화면
 

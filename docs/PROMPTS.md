@@ -58,7 +58,7 @@ Carved on the arch are faint glowing golden runes in an invented fictional scrip
 **AI 연결 경로**
 - claude.ai 아티팩트 링크로 접속: 플레이어 본인 Claude 계정 (`window.claude.use("sample")`)
 - 로그인 없이 플레이: Google Gemini (`gemini-3.5-flash-lite` ↔ `gemini-3.1-flash-lite` 자동 교체)
-- GitHub 공개본은 보안을 위해 API 키를 뺐습니다. `index.html`의 `GEMINI_API_KEY`에 본인 키를 넣으면 로그인 없이 플레이가 동작합니다.
+- GitHub 공개본은 보안을 위해 API 키를 뺐습니다. `play/index.html`의 `GEMINI_API_KEY`에 본인 키를 넣으면 로그인 없이 플레이가 동작합니다.
 
 ### 2-0. 문체 규칙 (모든 서술 프롬프트에 삽입)
 
