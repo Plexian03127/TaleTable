@@ -6,7 +6,7 @@ Tale Table은 **AI가 게임 마스터(GM)를 맡는 1인용 웹 TRPG**입니다
 플레이어는 선택지 버튼이 아니라 **자연어로 행동을 입력**하고, AI가 그 행동을 해석해 장면을 묘사하고 NPC를 연기합니다.
 주사위·HP·판정·엔딩 조건 같은 **규칙 계산은 코드가 담당**해서, AI 서술이 자유로워도 게임 규칙은 흔들리지 않습니다.
 
-![타이틀 화면](docs/screenshots/01_title_guest.jpg)
+![타이틀 화면](docs/screenshots/01_title_v2.jpg)
 
 🌐 **게임 소개 페이지**: https://plexian03127.github.io/TaleTable/
 
@@ -65,15 +65,16 @@ Tale Table은 **AI가 게임 마스터(GM)를 맡는 1인용 웹 TRPG**입니다
 
 | 세계관 선택 | 직업 선택 |
 |---|---|
-| ![](docs/screenshots/02_world.jpg) | ![](docs/screenshots/03_class.jpg) |
+| ![](docs/screenshots/02_world_v2.jpg) | ![](docs/screenshots/03_class_v2.jpg) |
 | **능력치 조정** | **게임 시작** |
-| ![](docs/screenshots/04_stat.jpg) | ![](docs/screenshots/05_game.jpg) |
+| ![](docs/screenshots/04_stat_v2.jpg) | ![](docs/screenshots/05_game_v2.jpg) |
 | **플레이 (NPC 대화)** | |
 | ![](docs/screenshots/06_play.jpg) | |
 
 ## 📝 문서
 
 - [개발 프롬프트 기록 & 게임 내 AI 프롬프트](docs/PROMPTS.md)
+- [데이터 저장 방법](docs/STORAGE.md)
 
 ## 🛠 개발 도구
 
